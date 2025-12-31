@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy New Year 2026</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        /* Reset & Basics */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            /* No scroll */
+            background-color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            /* Fallback to standard serif */
+        }
+
+        /* Video Background */
+        .fireplace-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            /* Center the video if contained */
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Show whole bottle/video on PC */
+            opacity: 0;
+            animation: videoFadeIn 10s ease-in-out 2s forwards;
+            /* 10s fade, starts after 2s */
+        }
+
+        /* Overlay Text */
+        .greeting-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            /* Space between main and sub text */
+        }
+
+        .greeting-text {
+            color: #f0f0f0;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            /* Cinematic Intro - Starts immediately */
+            animation:
+                cinematicIn 4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards,
+                fadeOut 3s ease-in-out 30s forwards;
+            will-change: transform, opacity, filter;
+        }
+
+        .sub-greeting {
+            color: #e0e0e0;
+            /* Brighter */
+            font-size: clamp(1.5rem, 5vw, 4rem);
+            /* Much Larger */
+            font-family: 'Times New Roman', serif;
+            font-weight: 600;
+            /* Bolder */
+            font-style: italic;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            /* Staggered Intro */
+            animation:
+                cinematicIn 4s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s forwards,
+                fadeOut 3s ease-in-out 30s forwards;
+            will-change: transform, opacity, filter;
+        }
+
+        /* Cinematic Animations */
+        @keyframes videoFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cinematicIn {
+            0% {
+                opacity: 0;
+                filter: blur(20px);
+                transform: scale(1.1) translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                filter: blur(0);
+            }
+
+            to {
+                opacity: 0;
+                filter: blur(10px);
+            }
+
+            /* Blur out as well */
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            video {
+                object-fit: cover;
+            }
+
+            .greeting-text {
+                font-size: 3rem;
+            }
+
+            .sub-greeting {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fireplace-container">
+        <video src="fireplace.mp4" autoplay loop muted playsinline>
+        </video>
+    </div>
+
+    <div class="greeting-container">
+        <h1 class="greeting-text">Happy New Year 2026</h1>
+        <p class="sub-greeting">Shinji Yoshikawa</p>
+    </div>
+
+</body>
+
+</html>
