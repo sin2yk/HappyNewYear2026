@@ -359,7 +359,23 @@
             }
         }
 
+        /* PC Stabilization (1025px+) */
+        @media (min-width: 1025px) {
+            #nav-group {
+                /* Aggressive Reset to Center Screen */
+                left: 50% !important;
+                transform: translateX(-50%) !important;
 
+                /* Force massive vertical gap using % */
+                top: 75% !important;
+                margin-top: 0 !important;
+
+                /* Force Center Alignment */
+                align-items: center !important;
+                text-align: center !important;
+                width: auto !important;
+            }
+        }
 
 
 
